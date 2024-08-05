@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.fade-out {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+[x-cloak] {
+  display: none !important;
+}
+
+.htmx-indicator {
+  display: none !important;
+}
+.htmx-indicator.htmx-request {
+  display: flex !important;
+}
+
+.htmx-indicator.htmx-request.flex {
+  display: flex !important;
+}
+.htmx-indicator.htmx-request.flex-col {
+  display: flex !important;
+  flex-direction: column;
+}
+
+button .htmx-indicator + .text {
+  display: block;
+}
+button .htmx-indicator.htmx-request + .text {
+  display: none;
+}

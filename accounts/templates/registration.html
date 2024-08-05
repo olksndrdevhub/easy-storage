@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block title %}Registration |{% endblock title %}
+
+{% block content %}
+<div id="wrapper" class="flex flex-col h-full mx-auto w-full md:w-3/6 lg:w-2/6 mt-10"
+    hx-boost="true"
+    hx-target="body"
+    hx-push-url="true"
+    hx-swap="outerHTML transition:true">
+    <span class="text-center">
+        <h2 class="text-3xl font-extrabold">Registration</h2>
+        <p class="text-md font-normal">Hey, enter your details to create account</p>
+    </span>
+    <form 
+        hx-post="{% url 'registration_view' %}" 
+        class="flex flex-col space-y-5 py-5">
+        <div>
+            <input required type="text" name="first_name" placeholder="First name" id="first_name" value="{{ submitted_f_name}}"
+            class="p-2 border-2 rounded-lg w-full
+                  {% if fname_error %} border-error {% else %} border-base {% endif %}">
+            {% if fname_error %}
+                <span class="text-action-danger">{{ fname_error }}</span>            
+            {% endif %}
+        </div>
+        <div>
+            <input required type="text" name="last_name" placeholder="Last name" id="last_name" value="{{ submitted_l_name}}"
+            class="p-2 border-2 rounded-lg w-full
+                  {% if lname_error %} border-error {% else %} border-base {% endif %}">
+            {% if lname_error %}
+                <span class="text-action-danger">{{ lname_error }}</span>            
+            {% endif %}
+        </div>
+        <div>
+            <input required type="email" name="email" placeholder="Email" id="email" value="{{ submitted_email }}"
+            class="p-2 border-2 rounded-lg w-full
+                  {% if email_error %} border-error {% else %} border-base{% endif %}">
+            {% if email_error %}
+                <span class="text-action-danger">{{ email_error }}</span>            
+            {% endif %}
+        </div>
+        <div>
+            <input required type="password" name="password" placeholder="Password" id="password" 
+            class="p-2 border-2 rounded-lg w-full 
+                  {% if password_error %} border-error {% else %} border-base{% endif %}">
+            {% if password_error %}
+                <span class="text-action-danger">{{ password_error }}</span>        
+            {% endif %}
+        </div>
+        <button type="submit" class="flex bg-primary text-white hover:bg-neutral py-2 px-4 rounded-lg cursor-pointer justify-center">
+            Sign up
+        </button>
+    </form>
+    <p class="text-center">Already have an account?
+        <a href="{% url 'signin_view' %}" class="text-secondary font-bold text-lg">
+            Sign in now!
+        </a>
+    </p>
+</div>
+{% endblock content %}
+
+{% block additional_javascript %}{% endblock additional_javascript %}

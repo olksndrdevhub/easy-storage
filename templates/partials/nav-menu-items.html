@@ -1,0 +1,48 @@
+
+{% if user.is_authenticated %}
+  <div class="flex items-center mb-5 md:mb-0">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" 
+      class="size-11 p-2 border-2 border-base rounded-l-lg">
+      <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+    </svg>
+    <input type="search" name="search" value="" class="border-base border-2 border-l-0 p-2 rounded-r-lg w-full" placeholder="Search...">
+  </div>
+  <!-- <li><a href="{% url 'dashboard' %}" class="flex space-x-2 bg-primary text-white hover:bg-neutral py-2 px-4 rounded-lg cursor-pointer"> -->
+  <!--   <span>Dashboard</span> -->
+  <!-- </a></li> -->
+  <li><a href="#" class="flex space-x-2 hover:bg-base py-2 px-4 rounded-lg cursor-pointer items-center">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+      <path fill-rule="evenodd" d="M3 2.25a.75.75 0 0 0 0 1.5v16.5h-.75a.75.75 0 0 0 0 1.5H15v-18a.75.75 0 0 0 0-1.5H3ZM6.75 19.5v-2.25a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 .75.75v2.25a.75.75 0 0 1-.75.75h-3a.75.75 0 0 1-.75-.75ZM6 6.75A.75.75 0 0 1 6.75 6h.75a.75.75 0 0 1 0 1.5h-.75A.75.75 0 0 1 6 6.75ZM6.75 9a.75.75 0 0 0 0 1.5h.75a.75.75 0 0 0 0-1.5h-.75ZM6 12.75a.75.75 0 0 1 .75-.75h.75a.75.75 0 0 1 0 1.5h-.75a.75.75 0 0 1-.75-.75ZM10.5 6a.75.75 0 0 0 0 1.5h.75a.75.75 0 0 0 0-1.5h-.75Zm-.75 3.75A.75.75 0 0 1 10.5 9h.75a.75.75 0 0 1 0 1.5h-.75a.75.75 0 0 1-.75-.75ZM10.5 12a.75.75 0 0 0 0 1.5h.75a.75.75 0 0 0 0-1.5h-.75ZM16.5 6.75v15h5.25a.75.75 0 0 0 0-1.5H21v-12a.75.75 0 0 0 0-1.5h-4.5Zm1.5 4.5a.75.75 0 0 1 .75-.75h.008a.75.75 0 0 1 .75.75v.008a.75.75 0 0 1-.75.75h-.008a.75.75 0 0 1-.75-.75v-.008Zm.75 2.25a.75.75 0 0 0-.75.75v.008c0 .414.336.75.75.75h.008a.75.75 0 0 0 .75-.75v-.008a.75.75 0 0 0-.75-.75h-.008ZM18 17.25a.75.75 0 0 1 .75-.75h.008a.75.75 0 0 1 .75.75v.008a.75.75 0 0 1-.75.75h-.008a.75.75 0 0 1-.75-.75v-.008Z" clip-rule="evenodd" />
+    </svg>
+    <span>My Companies</span>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+      <path fill-rule="evenodd" d="M12.53 16.28a.75.75 0 0 1-1.06 0l-7.5-7.5a.75.75 0 0 1 1.06-1.06L12 14.69l6.97-6.97a.75.75 0 1 1 1.06 1.06l-7.5 7.5Z" clip-rule="evenodd" />
+    </svg>
+  </a></li>
+  <li><a href="#" class="flex space-x-2 hover:bg-base py-2 px-4 rounded-lg cursor-pointer">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+      <path fill-rule="evenodd" d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z" clip-rule="evenodd" />
+    </svg>
+    <span>{{ user.get_full_name }}</span>
+  </a></li>
+  {% if user.is_superuser %}
+    <li><a href="{% url 'admin:index' %}" target="_blank" class="flex space-x-2 bg-primary text-white hover:bg-neutral py-2 px-4 rounded-lg cursor-pointer">
+      <span>Admin Panel</span>
+    </a></li>
+  {% endif %}
+  <li><a hx-get="{% url 'signout_view' %}" class="flex space-x-2 rounded-lg py-2 px-4 cursor-pointer hover:bg-base">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15m3 0 3-3m0 0-3-3m3 3H9" />
+    </svg>
+    <span class="lg:hidden">Sign Out</span>
+  </a></li>
+{% else %}
+  <li><a hx-get="{% url 'registration_view' %}" 
+        class="flex space-x-2 bg-primary text-white hover:bg-neutral py-2 px-4 rounded-lg cursor-pointer">
+    <span>Registration</span>
+  </a></li>
+  <li><a hx-get="{% url 'signin_view' %}"
+        class="flex space-x-2 hover:bg-base py-2 px-4 rounded-lg cursor-pointer">
+    <span class="">Sign In</span>
+  </a></li>
+{% endif %}

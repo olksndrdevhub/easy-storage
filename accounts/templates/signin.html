@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}Sign in |{% endblock title %}
+
+{% block content %}
+<div id="wrapper" class="flex flex-col h-full mx-auto w-full md:w-3/6 lg:w-2/6 mt-10"
+    hx-boost="true"
+    hx-target="body"
+    hx-push-url="true"
+    hx-swap="outerHTML transition:true">
+    <span class="text-center">
+        <h2 class="text-3xl font-extrabold">Sign in</h2>
+        <p class="text-md font-normal">Hey, enter your credentials to sign in</p>
+    </span>
+    <form 
+        hx-post="{% url 'signin_view' %}" 
+        class="flex flex-col space-y-5 py-5">
+        <div>
+            <input required type="email" name="email" placeholder="Email" id="email" value="{{ submitted_email }}"
+            class="p-2 border-2 rounded-lg w-full
+                  {% if email_error %} border-error {% else %} border-base{% endif %}">
+            {% if email_error %}
+                <span class="text-action-danger">{{ email_error }}</span>            
+            {% endif %}
+        </div>
+        <div>
+            <input required type="password" name="password" placeholder="Password" id="password" 
+            class="p-2 border-2 rounded-lg w-full 
+                  {% if password_error %} border-error {% else %} border-base{% endif %}">
+            {% if password_error %}
+                <span class="text-action-danger">{{ password_error }}</span>        
+            {% endif %}
+        </div>
+        <button type="submit" class="flex bg-primary text-white hover:bg-neutral py-2 px-4 rounded-lg cursor-pointer justify-center">
+            Sign in
+        </button>
+    </form>
+    <p class="text-center">Don't have an account?
+        <a href="{% url 'registration_view' %}" class="text-secondary font-bold text-lg">
+            Create one now!
+        </a>
+    </p>
+</div>
+{% endblock content %}
+
+{% block additional_javascript %}{% endblock additional_javascript %}
