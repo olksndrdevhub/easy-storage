@@ -1,0 +1,6 @@
+{% for company in companies %}
+  <div class="flex flex-col space-y-2">
+    <h1 class="text-3xl font-semibold">{{ company.name }}</h1>
+    <p class="text-neutral">{{ company.description }}</p>
+  </div>
+{% endfor %}

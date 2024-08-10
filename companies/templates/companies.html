@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}My Companies |{% endblock title %}
+
+{% block content %}
+  <div id="wrapper" class="flex flex-col h-full mx-auto w-full">
+    <h1 class="text-3xl font-semibold mb-2">My Companies:</h1>
+    {% include 'partials/companies-list.html' %}
+  </div>
+{% endblock content %}
+
+{% block additional_javascript %}{% endblock additional_javascript %}

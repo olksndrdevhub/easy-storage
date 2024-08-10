@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}Company: {{ company.name }} |{% endblock title %}
+
+{% block content %}
+  <div id="wrapper" class="flex flex-col h-full mx-auto w-full">
+    <h1 class="text-3xl font-semibold mb-2">{{ company.name }}</h1>
+    <p class="text-neutral">{{ company.description }}</p>
+  </div>
+{% endblock content %}
+
+{% block additional_javascript %}{% endblock additional_javascript %}

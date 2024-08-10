@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models.fields import uuid
 from django.utils.text import slugify
 
 from accounts.models import BaseModel
@@ -7,7 +8,7 @@ from accounts.models import BaseModel
 
 class Company(BaseModel):
     name = models.CharField(max_length=100)
-    slug = models.SlugField(blank=True, null=True)
+    slug = models.SlugField(unique=True)
     description = models.TextField(blank=True, null=True)
 
     is_active = models.BooleanField(default=True)
@@ -21,7 +22,8 @@ class Company(BaseModel):
         return f"{self.name}"
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.name)
+        if not self.slug:
+            self.slug = slugify(self.name) + "-" + uuid.uuid4().hex
         super(Company, self).save(*args, **kwargs)
 
 

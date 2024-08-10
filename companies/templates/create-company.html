@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Create Company |{% endblock title %}
+
+{% block content %}
+  <div id="wrapper" class="flex flex-col h-full mx-auto w-full md:w-3/6 lg:w-2/6">
+    <h1 class="text-3xl font-semibold mb-2">Your new Company:</h1>
+    {% include 'partials/create-company-form.html' %}
+  </div>
+{% endblock content %}
+
+{% block additional_javascript %}{% endblock additional_javascript %}
